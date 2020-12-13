@@ -12,6 +12,8 @@ if(isset($_POST['submit_registration'])) {
 	$confirm_password = $_POST['confirm_password'];
 	$email = $_POST['email'];
 	$user_type = "student";
+	
+	$hash = md5(rand(0, 1000));
 
 
 	// echo $firstname;
@@ -26,9 +28,16 @@ if(isset($_POST['submit_registration'])) {
 	// echo '<br>';
 
 
-	$select = "SELECT * FROM users WHERE username  = '$username'";
+
+
+	$select = "SELECT username FROM users WHERE username  = '$username'";
 	$reselect = $conn->query($select);
 
+		$selectemail = "SELECT email FROM users WHERE email  = '$email'";
+	$reselectemail = $conn->query($selectemail);
+
+
+	
 	if(mysqli_num_rows($reselect) > 0) {
 		header("Location: ../registration.php?error=usertaken");
 	}
@@ -36,10 +45,25 @@ if(isset($_POST['submit_registration'])) {
 	else if($password != $confirm_password) {
 		header("Location: ../registration.php?error=notmatch");
 	}
-	else {
-		$query = "INSERT INTO users (firstname, lastname, username, password, email, user_type) VALUES ('$firstname', '$lastname', '$username', '$password', '$email', '$user_type')";
-		$result = $conn->query($query);
-		header("Location: ../registration.php?success=inserted");
+	else if(mysqli_num_rows($reselectemail) > 0) {
+		header("Location: ../registration.php?error=emailtaken");
+	}
+	
+	else{
+		if(empty(preg_match("/@my.jru.edu$/", $email))) {
+			header("Location: ../registration.php?error=notspecificemail");
+		}
+		else {
+			$query = "INSERT INTO users (firstname, lastname, username, password, email, user_type, hash) VALUES ('$firstname', '$lastname', '$username', '$password', '$email', '$user_type', '$hash')";
+			$result = $conn->query($query);
+
+			
+		
+			header("Location: ../registration.php?success=inserted");
+			
+			
+		}
+		
 	}
 }
 

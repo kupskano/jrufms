@@ -221,10 +221,7 @@
           </div>
         </form>
           <!-- /.card-body -->
-          <div class="card-footer" style="display: none;">
-            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-            the plugin.
-          </div>
+         
         <!-- /.card -->
 
         <!-- /.card -->

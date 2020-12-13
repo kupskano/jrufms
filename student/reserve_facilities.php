@@ -5,11 +5,6 @@
       include '../phpfunction/loginfunction.php';
       session_start(); 
       $username = $_SESSION['username'];   
-      // include 'phpfunction/course.php';
-      include 'phpfunction/myfunction.php';
-      if(isset($_SESSION['company_name'])){
-        $company_name = $_SESSION['company_name'];
-      }
       
 ?>
 <style>
@@ -43,7 +38,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Add Applicant Section</h1>
+            <h1 class="m-0 text-dark">Reservation Form</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -122,45 +117,46 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Fullname</label>
-                  <input type="text" class="form-control" name="fullname" onkeyup="this.value  = this.value.toUpperCase();" placeholder="Fullname" required="">
-                </div>
-                  <div class="form-group" style="display: none;">
-                  <label>Fullname</label>
-                  <input type="text" class="form-control" name="company_name" value="<?php echo $_SESSION['company_name'];?>" placeholder="Fullname" required="">
+                  <label>Date Apply</label>
+                  <input type="date" class="form-control" name="fullname" required="">
                 </div>
 
-                <?php
-                $conn = mysqli_connect('localhost', 'root', '', 'pulilansystem');
-                $quer = "SELECT myref FROM users WHERE username = '$username'";
-                $res = $conn->query($quer);
-                $sd = mysqli_fetch_array($res);
-                $dd = array_shift($sd);
-                ?>
-                  <div class="form-group" style="display: none;">
-                  <label>Fullname</label>
-                  <input type="text" class="form-control" name="myref" value="<?php echo $dd;?>" placeholder="Fullname" required="">
-                </div>
-                <!-- /.form-group -->
                 <div class="form-group">
+                  <label>Type</label>
+                 <select class="form-control">
+                   <option>--Select Type--</option>
+                   <option>Student</option>
+                   <option>Teacher</option>
+                   <option>Staff</option>
+                 </select>
+                </div>
+
+              <!--   <div class="form-group">
                   <label>Gender</label>
                   <select class="form-control select2"  name="gender" required="" >
                     <option value="male">MALE</option>
                     <option value="female">FEMALE</option>
                   </select>
-                </div>
-                <!-- /.form-group -->
+                </div> -->
               </div>
               <!-- /.col -->
               <div class="col-md-6">
                 <div class="form-group">
-                  <label>Department</label>
-                 <input type="text" class="form-control" name="department" onkeyup="this.value  = this.value.toUpperCase();" placeholder="Department" required="">
+                  <label>Fullname</label>
+                 <input type="text" class="form-control" name="department"  placeholder="Fullname" required="">
                 </div>
                 <!-- /.form-group -->
+                
                 <div class="form-group">
-                  <label>Date Of Birth</label>
-                  <input type="date" class="form-control" name="dob">
+                  <label>Division</label>
+                 <select class="form-control">
+                   <option>--Select Division--</option>
+                   <option>Elementary</option>
+                   <option>Junior High School</option>
+                   <option>Senior High School</option>
+                   <option>College</option>
+                   <option>Law School</option>
+                 </select>
                 </div>
                 <!-- /.form-group -->
               </div>
@@ -170,41 +166,152 @@
 
             <div class="row">
               <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label>Age</label>
-                  <input type="number" name="age" class="form-control" placeholder="Age">
+               <div class="form-group">
+                  <label>Office</label>
+                 <select class="form-control">
+                   <option>--Select Office--</option>
+                   <option>Sample1</option>
+                   <option>Sample2</option>
+                   <option>Sample3</option>
+                 </select>
                 </div>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
               <div class="col-12 col-sm-6">
-                <div class="form-group">
-                  <label>Position</label>
-                  <div class="select2-purple">
-                    <input type="text" class="form-control" onkeyup="this.value  = this.value.toUpperCase();" name="position" placeholder="Position">
-                  </div>
+               <div class="form-group">
+                  <label>Organization</label>
+                 <select class="form-control">
+                   <option>--Select Organization--</option>
+                   <option>Sample1</option>
+                   <option>Sample2</option>
+                   <option>Sample3</option>
+                 </select>
                 </div>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
             </div>
-            <div class="row">
+
+
+
+             <div class="row">
               <div class="col-12 col-sm-12">
                 <div class="form-group">
                   <center>
-                  <button class="form-control btn btn-info" type="submit" name="add_applicant">Add</button>
+                  <button class="form-control btn btn-danger" type="button" disabled="">Facilities to be used on</button>
                   </center>
                 </div>
+              </div>
+            </div>
+
+             <div class="row">
+              <div class="col-12 col-sm-6">
+               <div class="form-group">
+                  <label>Date</label>
+                  <input type="date" name="" class="form-control" required="">
+               </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6">
+               <div class="form-group">
+                  <label>Day</label>
+                 <select class="form-control" required="">
+                   <option>--Select Day--</option>
+                   <option>Monday</option>
+                   <option>Tuesday</option>
+                   <option>Wednesday</option>
+                   <option>Thursday</option>
+                   <option>Friday</option>
+                   <option>Saturday</option>
+                 </select>
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
+
+              <div class="row">
+              <div class="col-12 col-sm-6">
+               <div class="form-group">
+                  <label>Time Start</label>
+                  <input type="time" name="" class="form-control" required="">
+               </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6">
+               <div class="form-group">
+                  <label>Time End</label>
+                  <input type="time" name="" class="form-control" required="">
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
+
+
+            <div class="row">
+              <div class="col-12 col-sm-6">
+               <div class="form-group">
+                  <label>Purpose</label>
+                 <select class="form-control" required="">
+                   <option>--Select Purpose--</option>
+                   <option>Monday</option>
+                   <option>Tuesday</option>
+                   <option>Wednesday</option>
+                   <option>Thursday</option>
+                   <option>Friday</option>
+                   <option>Saturday</option>
+                 </select>
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6">
+               <div class="form-group">
+                  <label>Place</label>
+                 <select class="form-control" required="">
+                   <option>--Select Place--</option>
+                   <option>Monday</option>
+                   <option>Tuesday</option>
+                   <option>Wednesday</option>
+                   <option>Thursday</option>
+                   <option>Friday</option>
+                   <option>Saturday</option>
+                 </select>
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
+
+
+
+
+
+            <div class="row">
+              <div class="col-6 col-sm-6">
+                <div class="form-group">
+                  <center>
+                  <button class="form-control btn btn-info" type="button" name="">Reserve</button>
+                  </center>
+                </div>
+              </div>
+              <div class="col-6 col-sm-6">
+                <div class="form-group">
+                  <button class="form-control btn btn-default" type="button" onclick="window.location.href='dashboard.php'">Cancel</button>
+
+                </div>
+                 
               </div>
             </div>
             <!-- /.row -->
           </div>
         </form>
           <!-- /.card-body -->
-          <div class="card-footer" style="display: none;">
-            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-            the plugin.
-          </div>
+          
         <!-- /.card -->
 
         <!-- /.card -->

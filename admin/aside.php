@@ -44,7 +44,7 @@ if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-registered"></i>
               <p>
-                Manage account
+                Manage Settings
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

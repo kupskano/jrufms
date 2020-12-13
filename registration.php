@@ -43,8 +43,8 @@
 
                     $cec = $_GET['success'];
                     if($cec == 'inserted'){
-                      echo '<div class="alert alert-info alert-dismissible fade show" role="alert">
-              <strong><center>Registered Successfully</center></strong> 
+                      echo '<div class="alert alert-info alert-dismissible  show" role="alert">
+              <strong><center>Registered Successfully <br> Check your email to verify your account</center></strong> 
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -76,6 +76,37 @@
                     if($cec == 'notmatch'){
                       echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
               <strong><center>Password and confirm password not match!</center></strong> 
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>';
+                    }
+                  }
+                ?>
+
+
+                 <?php
+                  if(isset($_GET['error'])){
+
+                    $cec = $_GET['error'];
+                    if($cec == 'notspecificemail'){
+                      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong><center>Invalid email for JRU</center></strong> 
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>';
+                    }
+                  }
+                ?>
+
+                  <?php
+                  if(isset($_GET['error'])){
+
+                    $cec = $_GET['error'];
+                    if($cec == 'emailtaken'){
+                      echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong><center>Email is taken</center></strong> 
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -125,7 +156,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" name="email" placeholder="Email" required="">
+          <input type="text" class="form-control" name="email" placeholder="Email" required="">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -163,7 +194,7 @@
 <script src="dist/js/adminlte.min.js"></script>
  <script>
     window.setTimeout(function() {
-    $(".alert").fadeTo(200, 0) 
+    $(".fade").fadeTo(200, 0) 
 }, 2000);
   </script>
 

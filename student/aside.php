@@ -59,26 +59,34 @@ if(isset($_SESSION['username']) || isset($_SESSION['user_type'])){
             </a>
           </li>
           <li class="nav-item">
+            <a href="reserve_facilities.php" class="nav-link">
+              <i class="nav-icon fas fa-calendar"></i>
+              <p>
+                Reserve Facilities
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="add_applicant.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-cog"></i>
               <p>
-                Add Applicant
+                Ticketing Maintenance
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="applicant_list.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+            <a href="add_applicant.php" class="nav-link">
+              <i class="nav-icon fas fa-map-marker"></i>
               <p>
-               Active Applicant List
+                Track Reservation
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="fired_applicant_list.php" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+            <a href="add_applicant.php" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
               <p>
-               Fired Applicant List
+                Change Password
               </p>
             </a>
           </li>
